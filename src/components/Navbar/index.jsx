@@ -15,9 +15,9 @@ const NavBar = () => {
   return (
     <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">Test</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">ImmoTep</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Articles</Nav.Link>
+            <Nav.Link as={Link} to="/">Les biens</Nav.Link>
             {userInfo.isLoggedIn ? (
           <>
             <LogoutButton />

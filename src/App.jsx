@@ -10,6 +10,8 @@ import Login from './pages/Auth/Login'
 import NewPassword from './pages/Auth/NewPassword'
 import AuthSuccess from './pages/Auth/AuthSuccess'
 import LogoutSuccess from './pages/Auth/LogoutSuccess'
+import Home from './pages/Home';
+import ShowProperty from './components/Properties/show';
 
 //components
 import NavBar from './components/Navbar'
@@ -22,6 +24,8 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/property/:id" element={<ShowProperty/>}/>
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/newpassword" element={<NewPassword/>} />
