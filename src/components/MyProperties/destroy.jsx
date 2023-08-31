@@ -3,34 +3,32 @@ import { useAtom } from 'jotai'
 import { userAtom } from "../../stores/userAtom";
 import { API_URL } from "../../stores/apiUrl";
 
-const DestroyProperty = (propertyId) => {
+const DestroyProperty = ({propertyId, onDelete}) => {
   const navigate = useNavigate();
   const [user] = useAtom(userAtom);
+  const id = propertyId
 
-    const handleDestroy = async () => {
+  const handleDestroy = async () => {
     try {
-      const response = await fetch(API_URL + '/properties/' + propertyId, {
+      const response = await fetch(API_URL + '/properties/' + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${user.token}`,
         },
-      })
+      });
+
       if (response.ok) {
-        console.log('Le bien a été  supprimé avec succès');
-        navigate(`/myproperties/${user.id}`)
-
-
-
+        console.log('Property deleted successfully');
+        onDelete();
       } else {
-        console.log(propertyId)
-
-        console.error("Erreur lors de la suppression du bien");
+        console.log('Failed to delete property');
       }
     } catch (error) {
-      console.error("Erreur lors de la suppression du bien :", error);
+      console.error('An error occurred while deleting property:', error);
     }
-  };
+  }
+
 
   return (
     <button onClick={handleDestroy}>Supprimer ce bien</button>

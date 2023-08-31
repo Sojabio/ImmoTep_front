@@ -11,7 +11,6 @@ const MyProperties = () => {
   const id = useParams().id;
   const [myProperties, setMyProperties] = useState([]);
 
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(API_URL + "/properties", {
@@ -32,8 +31,16 @@ const MyProperties = () => {
         console.error('Erreur de requête : ', error)
       }
     };
+
+    useEffect(() => {
     fetchData()
   }, []);
+
+  const handlePropertyDeleted = async () => {
+    // Call this function after property is successfully deleted
+    await fetchData(); // Fetch updated list of properties
+  };
+
 
 
   return (
@@ -47,8 +54,7 @@ const MyProperties = () => {
             <p>description : {property.description}</p>
             <p>prix : {property.price}</p>
             <Link to={`/updateproperty/${property.id}`}>Modifier ce bien</Link>
-            <p> <DestroyProperty propertyId={property.id}/> </p>
-            <p>*******************</p>
+            <DestroyProperty propertyId={property.id} onDelete={handlePropertyDeleted} />            <p>*******************</p>
           </div>
         )
       })}
