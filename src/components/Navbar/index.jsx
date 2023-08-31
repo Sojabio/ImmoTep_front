@@ -20,6 +20,7 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">Les biens</Nav.Link>
             {userInfo.isLoggedIn ? (
           <>
+            <Nav.Link as={Link} to={`/myproperties/${userInfo.id}`}>Profil</Nav.Link>
             <LogoutButton />
           </>
             ) : (

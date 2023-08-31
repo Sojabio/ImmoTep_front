@@ -45,6 +45,7 @@ function Login() {
         });
         navigate('/authsuccess')
         console.log("authentification réussie")
+        console.log(response.headers.get("Authorization"))
       } else {
         setError('Identifiants invalides');
       }

@@ -39,7 +39,7 @@ return (
       {properties.map(property => {
         return (
           <div key={property.id}>
-            <p>article n° : {property.id}</p>
+            <p>annonce n° : {property.id}</p>
             <p>titre : {property.title} </p>
             <p>description : {property.description}</p>
             <p>prix : {property.price}</p>

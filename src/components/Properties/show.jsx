@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../stores/apiUrl";
-import { Link } from "react-router-dom";
 
 const showProperty = () => {
-  const [property, setProperty] = useState([])
   const id = useParams().id
+  const [property, setProperty] = useState('')
+  const [owner, setOwner] = useState('')
 
-
- // RECUPERER LES DONNEES POUR LA LISTE
  useEffect(() => {
   const fetchData = async () => {
     try {
@@ -22,6 +20,20 @@ const showProperty = () => {
       if (response.ok) {
         const jsonData = await response.json();
         setProperty(jsonData);
+        console.log(jsonData)
+
+        fetch(API_URL + '/user/' + (jsonData.user_id), {
+          method: 'get',
+          headers: {
+           'Content-Type': 'application/json'
+          }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+          setOwner(response)
+          console.log(response)
+        })
+
       } else {
         throw new Error('Erreur lors de la requête');
       }
@@ -41,6 +53,7 @@ return (
       <p>titre : {property.title} </p>
       <p>description : {property.description}</p>
       <p>prix : {property.price}</p>
+      <p>propriétaire: {owner.email}</p>
       <p>*******************</p>
     </div>
 )

@@ -44,6 +44,7 @@ function Register () {
           token: response.headers.get("Authorization"),
           id: data.user.id
         });
+        
         navigate('/authsuccess')
       } else {
         setError('Erreur lors de la création du compte');
