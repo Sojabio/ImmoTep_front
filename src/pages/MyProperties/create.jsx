@@ -13,8 +13,6 @@ function CreateProperty() {
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
 
-
-
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   }
@@ -93,7 +91,7 @@ function CreateProperty() {
           />
         </div>
         <div>
-          <label htmlFor="description">Description :</label>
+          <label htmlFor="image">image:</label>
           <input
           type="file"
           name="image"
