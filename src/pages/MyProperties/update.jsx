@@ -44,7 +44,7 @@ function UpdateProperty() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `${user.token}`,
         },
         body: JSON.stringify(newProperty),
       });

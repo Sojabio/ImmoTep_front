@@ -14,7 +14,7 @@ const DestroyProperty = ({propertyId, onDelete}) => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `${user.token}`,
         },
       });
 

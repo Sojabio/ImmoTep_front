@@ -9,6 +9,7 @@ function CreateProperty() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
 
@@ -26,47 +27,45 @@ function CreateProperty() {
     setDescription(event.target.value);
   };
 
+  const handleImageChange = event => {
+    const selectedFile = event.target.files[0];
+    setImage(selectedFile);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newProperty = {
-      property: {
-        title: title,
-        price: price,
-        description: description,
-        user_id: user.id
-      }
-    };
+    const formData = new FormData();
+      formData.append('property[title]', title);
+      formData.append('property[price]', price);
+      formData.append('property[description]', description);
+      formData.append('property[user_id]', user.id);
+      formData.append('image', image);
 
     try {
-      const response = await fetch(API_URL + '/properties/', {
+      const response = await fetch(API_URL + '/properties', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `${user.token}`,
         },
-        body: JSON.stringify(newProperty),
+        body: formData,
       });
 
       if (response.ok) {
         console.log('Le bien a été ajouté avec succès');
-        navigate(`/myproperties/${user.id}`)
-
+        navigate(`/myproperties/${user.id}`);
       } else {
         console.error("Erreur lors de l'ajout du bien");
-        console.log(user.token)
-        console.log(user.id)
       }
     } catch (error) {
       console.error("Erreur lors de l'ajout du bien :", error);
     }
-  };
+  }
 
   return (
     <div>
       <h2>Ajoutez un nouveau bien</h2>
-      <form onSubmit={handleSubmit}>
+      <form  encType="multipart/form-data" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Titre :</label>
           <input
@@ -92,6 +91,13 @@ function CreateProperty() {
             value={description}
             onChange={handleDescriptionChange}
           />
+        </div>
+        <div>
+          <label htmlFor="description">Description :</label>
+          <input
+          type="file"
+          name="image"
+          onChange={handleImageChange} />
         </div>
         <button type="submit">Ajouter</button>
       </form>
