@@ -38,12 +38,21 @@ function Login() {
 
         Cookies.set('token', response.headers.get("Authorization"));
         Cookies.set('id', data.user.id);
-
-        setUser({
-          isLoggedIn: true,
-          token: response.headers.get("Authorization"),
-          id: data.user.id
-        });
+        if (data.user.is_admin === true) {
+          setUser({
+            isAdmin: true,
+            isLoggedIn: true,
+            token: response.headers.get("Authorization"),
+            id: data.user.id
+          });
+        } else {
+          setUser({
+            isAdmin: false,
+            isLoggedIn: true,
+            token: response.headers.get("Authorization"),
+            id: data.user.id
+          });
+        }
         navigate('/authsuccess')
         console.log("authentification réussie")
         console.log(response.headers.get("Authorization"))

@@ -1,12 +1,10 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { userAtom } from '../../stores/userAtom';
-import {useAtom} from 'jotai'
-
+import { useAtom } from 'jotai';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
 import LogoutButton from '../Auth/Logout';
 
 const NavBar = () => {
@@ -14,29 +12,35 @@ const NavBar = () => {
 
   return (
     <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <Navbar.Brand as={Link} to="/">ImmoTep</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Les biens</Nav.Link>
-            {userInfo.isLoggedIn ? (
-          <>
-            <Nav.Link as={Link} to={`/myproperties/${userInfo.id}`}>Profil</Nav.Link>
-            <Nav.Link as={Link} to="/newpassword">mdp
-            </Nav.Link>
+      <Container>
+        <Navbar.Brand as={Link} to="/">ImmoTep</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link as={Link} to="/">Les biens</Nav.Link>
+          {userInfo.isLoggedIn ? (
+            <>
+              {userInfo.isAdmin ? ( 
+                <>
+                  <Nav.Link as={Link} to="/dashboardadmin">Dashboard admin</Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to={`/myproperties/${userInfo.id}`}>Profil</Nav.Link>
+                  <Nav.Link as={Link} to="/newpassword">Mot de passe</Nav.Link>
+                </>
+              )}
+              <LogoutButton />
+            </>
+          ) : (
+            <>
+              <Nav.Link as={Link} to="/register">S'inscrire</Nav.Link>
+              <Nav.Link as={Link} to="/login">Se connecter</Nav.Link>
+            </>
+          )}
+        </Nav>
+      </Container>
+    </Navbar>
+  );
+};
 
-            <LogoutButton />
-          </>
-            ) : (
-          <>
-            <Nav.Link as={Link} to="/register">S'inscrire</Nav.Link>
-            <Nav.Link as={Link} to="/login">Se connecter</Nav.Link>
-          </> )}
-          </Nav>
-        </Container>
-      </Navbar>
-  )
-}
+export default NavBar;
 
-
-
-export default NavBar
