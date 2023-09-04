@@ -13,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const regex = new RegExp("[a-zA-Z0-9.+-]+@[a-zA-Z]+.[a-zA-Z]{2,3}");
 
 
   const handleLogin = async (event) => {
@@ -54,6 +55,26 @@ function Login() {
     }
   };
 
+  const resetpassword = () => {
+    if (regex.test(email)) {
+      const data = {
+        user: {
+          email: email,
+        },
+      };
+      fetch(API_URL + "/users/password", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(() => navigate("/"));
+    } else {
+      setError(
+        "Merci d'entrer une adresse mail valide avant de changer votre mdp."
+      );
+    }
+  };
 
 
   return (
@@ -77,7 +98,7 @@ function Login() {
         />
         <button type="submit">Se connecter</button>
       </form>
-
+      <button  onClick={() => resetpassword()}>Mot de passe oublié ? </button>
     </div>
   );
 }

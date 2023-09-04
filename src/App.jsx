@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './pages/Auth/Register'
 import Login from './pages/Auth/Login'
 import NewPassword from './pages/Auth/NewPassword'
+import NewPwdSuccess from './pages/Auth/NewPassword/success';
 import AuthSuccess from './pages/Auth/AuthSuccess'
 import LogoutSuccess from './pages/Auth/LogoutSuccess'
 import Home from './pages/Home';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/newpassword" element={<NewPassword/>} />
+          <Route path="/newpwdsuccess" element={<NewPassword/>} />
           <Route path="/authsuccess" element={<AuthSuccess/>} />
           <Route path="/logoutsuccess" element={<LogoutSuccess/>} />
         </Routes>
