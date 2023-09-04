@@ -21,6 +21,9 @@ const NavBar = () => {
             {userInfo.isLoggedIn ? (
           <>
             <Nav.Link as={Link} to={`/myproperties/${userInfo.id}`}>Profil</Nav.Link>
+            <Nav.Link as={Link} to="/newpassword">mdp
+            </Nav.Link>
+
             <LogoutButton />
           </>
             ) : (
