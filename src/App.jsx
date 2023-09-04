@@ -16,6 +16,7 @@ import ShowProperty from './components/Properties/show';
 import MyProperties from './pages/MyProperties';
 import CreateProperty from './pages/MyProperties/create';
 import UpdateProperty from './pages/MyProperties/update';
+import DashboardAdmin from './pages/Admin/Dashboard';
 
 //components
 import NavBar from './components/Navbar'
@@ -40,6 +41,7 @@ function App() {
           <Route path="/newpwdsuccess" element={<NewPassword/>} />
           <Route path="/authsuccess" element={<AuthSuccess/>} />
           <Route path="/logoutsuccess" element={<LogoutSuccess/>} />
+          <Route path="/dashboardadmin" element={<DashboardAdmin/>} />
         </Routes>
       </Router>
 

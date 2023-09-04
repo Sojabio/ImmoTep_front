@@ -40,6 +40,7 @@ function Register () {
         Cookies.set('id', data.user.id);
 
         setUser({
+          isAdmin: false,
           isLoggedIn: true,
           token: response.headers.get("Authorization"),
           id: data.user.id
