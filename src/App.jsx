@@ -37,8 +37,8 @@ function App() {
           <Route path="updateproperty/:id" element={<UpdateProperty/>}/>
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/newpassword" element={<NewPassword/>} />
-          <Route path="/newpwdsuccess" element={<NewPassword/>} />
+          <Route path="/new_password/:token" element={<NewPassword />} />
+          <Route path="/newpwdsuccess" element={<NewPwdSuccess/>}/>
           <Route path="/authsuccess" element={<AuthSuccess/>} />
           <Route path="/logoutsuccess" element={<LogoutSuccess/>} />
           <Route path="/dashboardadmin" element={<DashboardAdmin/>} />
