@@ -39,6 +39,7 @@ function Login() {
         Cookies.set('token', response.headers.get("Authorization"));
         Cookies.set('id', data.user.id);
         if (data.user.is_admin === true) {
+          Cookies.set('isAdmin', data.user.is_admin);
           setUser({
             isAdmin: true,
             isLoggedIn: true,

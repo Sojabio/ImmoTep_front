@@ -16,6 +16,7 @@ function LogoutButton() {
 
     Cookies.remove('token');
     Cookies.remove('id');
+    Cookies.remove('isAdmin');
     navigate('/logoutsuccess')
   };
 
