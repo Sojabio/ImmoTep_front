@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAtom } from 'jotai';
+import { useNavigate, useParams } from "react-router-dom";
 
-import { userAtom } from "../../../stores/userAtom";
 import { API_URL } from "../../../stores/apiUrl";
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [user] = useAtom(userAtom);
+  const { token } = useParams()
+  console.log(token)
 
   const setNewpassword = async(e) => {
     e.preventDefault();
 
     const data = {
       user: {
-        reset_password_token: user.token,
+        reset_password_token: token,
         password: password,
         password_confirmation: password,
       },
@@ -32,9 +31,11 @@ const NewPassword = () => {
 
       if (response.ok) {
         console.log('Le mdp a été modifié avec succès');
-        navigate("/");
+        navigate("/newpwdsuccess");
       } else {
         console.error("Erreur lors de la modification du mdp");
+        console.log(token)
+        console.log('API Response:', response);
       }
     } catch (error) {
       console.error("Erreur lors de la modification du mdp :", error);
