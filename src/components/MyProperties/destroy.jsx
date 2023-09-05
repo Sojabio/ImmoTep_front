@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { useAtom } from 'jotai'
 import { userAtom } from "../../stores/userAtom";
 import { API_URL } from "../../stores/apiUrl";
 
 const DestroyProperty = ({propertyId, onDelete}) => {
-  const navigate = useNavigate();
   const [user] = useAtom(userAtom);
   const id = propertyId
 
