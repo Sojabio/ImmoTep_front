@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 
 import { API_URL } from "../../stores/apiUrl";
 
-
-import UpdateProperty from "./update";
 import DestroyProperty from "../../components/MyProperties/destroy";
 
 const MyProperties = () => {
