@@ -42,6 +42,7 @@ function CreateProperty() {
       formData.append('property[title]', title);
       formData.append('property[price]', price);
       formData.append('property[description]', description);
+      formData.append('property[city]', city);
       formData.append('property[user_id]', user.id);
       formData.append('image', image);
 

@@ -1,18 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { useNavigate, useParams} from 'react-router-dom';
 import { userAtom } from '../../stores/userAtom';
 import { API_URL } from '../../stores/apiUrl';
 
 function UpdateProperty() {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState(undefined);
+  const [price, setPrice] = useState(undefined);
+  const [description, setDescription] = useState(undefined);
+  const [city, setCity] = useState(undefined);
+  const [image, setImage] = useState('');
   const [user] = useAtom(userAtom);
+  const [originalData, setOriginalData] = useState([])
   const navigate = useNavigate();
   const propertyId = useParams().id;
 
-  const handleTitleChange = (event) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(API_URL + "/properties/" + propertyId, {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (response.ok) {
+          const jsonData = await response.json();
+          setOriginalData(jsonData);
+          setTitle(jsonData.title || '');
+          setPrice(jsonData.price || '');
+          setDescription(jsonData.description || '');
+          setCity(jsonData.city || '');
+        } else {
+          throw new Error('Erreur lors de la requête');
+        }
+      } catch (error) {
+        console.error('Erreur de requête : ', error)
+      }
+    };
+    fetchData()
+  }, []);
+
+  function handleTitleChange(event) {
     setTitle(event.target.value);
   }
 
@@ -24,15 +53,25 @@ function UpdateProperty() {
     setDescription(event.target.value);
   };
 
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
+
+  const handleImageChange = event => {
+    const selectedFile = event.target.files[0];
+    setImage(selectedFile);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const newProperty = {
       property: {
-        title: title,
-        price: price,
-        description: description,
+        title: title || originalData.title,
+        price: price || originalData.price,
+        description: description || originalData.description,
+        city: city || originalData.city,
+        image: image || originalData.image,
         user_id: user.id
       }
     };
@@ -66,28 +105,48 @@ function UpdateProperty() {
         <div>
           <label htmlFor="title">Titre :</label>
           <input
+            placeholder={originalData.title}
             type="text"
             id="title"
-            value={title}
+            value={title || originalData.title}
             onChange={handleTitleChange}
           />
         </div>
         <div>
           <label htmlFor="price">Price :</label>
           <input
+            placeholder={originalData.price}
             type="number"
             id="content"
-            value={price}
+            value={price || originalData.price}
             onChange={handlePriceChange}
           />
         </div>
         <div>
           <label htmlFor="description">Description :</label>
           <textarea
+            placeholder={originalData.description}
             id="description"
-            value={description}
+            value={description || originalData.description}
             onChange={handleDescriptionChange}
           />
+        </div>
+        <div>
+          <label htmlFor="city">Ville :</label>
+          <input
+            placeholder={originalData.city}
+            type="text"
+            id="city"
+            value={city}
+            onChange={handleCityChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="image">image:</label>
+          <input
+          type="file"
+          name="image"
+          onChange={handleImageChange} />
         </div>
         <button type="submit">Modifier</button>
       </form>
