@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URL } from "../../../stores/apiUrl";
+import { API_URL } from "../../../stores/apiUrl"; 
 
 const DashboardAdmin = () => {
   const [properties, setProperties] = useState([]);
@@ -8,7 +8,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/properties`, {
+        const response = await fetch(`${API_URL}/properties`, { 
           method: 'get',
           headers: {
             'Content-Type': 'application/json'
@@ -29,27 +29,6 @@ const DashboardAdmin = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchOwnerEmails = async () => {
-      const propertiesWithOwnerEmails = await Promise.all(properties.map(async property => {
-        const response = await fetch(`${API_URL}/user/${property.user_id}`, {
-          method: 'get',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        if (response.ok) {
-          const userData = await response.json();
-          property.user = userData; 
-        }
-        return property;
-      }));
-      setProperties(propertiesWithOwnerEmails);
-    };
-
-    fetchOwnerEmails();
-  }, [properties]);
-
   return (
     <div>
       <h1>Liste des Biens</h1>
@@ -58,7 +37,7 @@ const DashboardAdmin = () => {
           <tr>
             <th>ID</th>
             <th>Titre</th>
-            <th>Email du Propriétaire</th>
+            <th>ID du propriétaire</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +47,9 @@ const DashboardAdmin = () => {
               <td>
                 <Link to={`/property/${property.id}`}>{property.title}</Link>
               </td>
-              <td>{property.user?.email}</td>
+              <td>
+                <Link to={`/user/${property.user_id}`}>{property.user_id}</Link>
+              </td>
             </tr>
           ))}
         </tbody>
