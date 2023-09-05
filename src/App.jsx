@@ -1,5 +1,8 @@
 import './App.css'
-
+import { useAtom } from 'jotai';
+import { userAtom } from './stores/userAtom';
+import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +27,23 @@ import NavBar from './components/Navbar'
 
 
 function App() {
+  const [user] = useAtom(userAtom);
+  const [, setUser] = useAtom(userAtom);
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    const id = Cookies.get('id');
+    const isAdmin = Cookies.get('isAdmin');
+
+    if (token) {
+      setUser({
+        id: id,
+        isAdmin: isAdmin,
+        isLoggedIn: true,
+        token: token,
+      });
+    }
+  }, []);
 
   return (
     <>
