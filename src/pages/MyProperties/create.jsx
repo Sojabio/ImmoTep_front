@@ -9,6 +9,7 @@ function CreateProperty() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [city, setCity] = useState('');
   const [image, setImage] = useState('');
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
@@ -23,6 +24,10 @@ function CreateProperty() {
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
+  };
+
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
   };
 
   const handleImageChange = event => {
@@ -88,6 +93,15 @@ function CreateProperty() {
             id="description"
             value={description}
             onChange={handleDescriptionChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="city">Ville :</label>
+          <input
+            type="text"
+            id="city"
+            value={city}
+            onChange={handleCityChange}
           />
         </div>
         <div>

@@ -53,7 +53,9 @@ return (
       <p>titre : {property.title} </p>
       <p>description : {property.description}</p>
       <p>prix : {property.price}</p>
+      <p>ville : {property.city}</p>
       <p>propriétaire: {owner.email}</p>
+      <p><img src={property.image} alt={property.title} /> </p>
       <p>*******************</p>
     </div>
 )
