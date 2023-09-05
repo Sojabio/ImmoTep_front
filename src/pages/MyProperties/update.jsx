@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAtom } from 'jotai';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 import { userAtom } from '../../stores/userAtom';
 import { API_URL } from '../../stores/apiUrl';
 
@@ -11,8 +11,6 @@ function UpdateProperty() {
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
   const propertyId = useParams().id;
-
-
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);

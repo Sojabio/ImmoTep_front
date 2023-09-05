@@ -55,7 +55,7 @@ const MyProperties = () => {
             <p>prix : {property.price}</p>
             <p>city : {property.city}</p>
             <img src={property.image} alt={property.title} />
-            <Link to={`/updateproperty/${property.id}`}>Modifier ce bien</Link>
+            <Link to={`/updateproperty/${property.id}`} originaltitle={property.title}>Modifier ce bien</Link>
             <DestroyProperty propertyId={property.id} onDelete={handlePropertyDeleted} />            <p>*******************</p>
           </div>
         )
