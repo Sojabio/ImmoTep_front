@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { userAtom } from '../../stores/userAtom';
 import { useAtom } from 'jotai';
@@ -18,14 +17,13 @@ const NavBar = () => {
           <Nav.Link as={Link} to="/">Les biens</Nav.Link>
           {userInfo.isLoggedIn ? (
             <>
-              {userInfo.isAdmin ? ( 
+              {userInfo.isAdmin ? (
                 <>
                   <Nav.Link as={Link} to="/dashboardadmin">Dashboard admin</Nav.Link>
                 </>
               ) : (
                 <>
                   <Nav.Link as={Link} to={`/myproperties/${userInfo.id}`}>Profil</Nav.Link>
-                  <Nav.Link as={Link} to="/newpassword">Mot de passe</Nav.Link>
                 </>
               )}
               <LogoutButton />
@@ -43,4 +41,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
