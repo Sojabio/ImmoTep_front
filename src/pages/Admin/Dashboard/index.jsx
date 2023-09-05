@@ -48,7 +48,7 @@ const DashboardAdmin = () => {
                 <Link to={`/property/${property.id}`}>{property.title}</Link>
               </td>
               <td>
-                <Link to={`/user/${property.user_id}`}>{property.user_id}</Link>
+                <Link to={`/userdetails/${property.user_id}`}>{property.user_id}</Link>
               </td>
             </tr>
           ))}

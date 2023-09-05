@@ -21,6 +21,7 @@ import CreateProperty from './pages/MyProperties/create';
 import UpdateProperty from './pages/MyProperties/update';
 import DashboardAdmin from './pages/Admin/Dashboard';
 import UpdateUserInfo from './pages/UserInfo/update';
+import UserDetails from './pages/Admin/UserDetails';
 
 //components
 import NavBar from './components/Navbar'
@@ -64,6 +65,7 @@ function App() {
           <Route path="/logoutsuccess" element={<LogoutSuccess/>} />
           <Route path="/dashboardadmin" element={<DashboardAdmin/>} />
           <Route path="/updateuser/:id" element={<UpdateUserInfo/>} />
+          <Route path="userdetails/:id" element={<UserDetails/>} />
 
         </Routes>
       </Router>
