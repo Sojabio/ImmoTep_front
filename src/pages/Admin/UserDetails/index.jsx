@@ -6,6 +6,7 @@ function UserDetails() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [formattedDate, setFormattedDate] = useState(null);
+  const [userProperties, setUserProperties] = useState([]);
 
   useEffect(() => {
     fetch(`${API_URL}/user/${id}`)
@@ -18,18 +19,35 @@ function UserDetails() {
           setFormattedDate(formatted);
         }
       });
+
+    fetch(`${API_URL}/properties?user_id=${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUserProperties(data);
+      });
   }, [id]);
 
   return (
     <div>
       {user ? (
         <div>
-          <h2>Informations de l'utilisateur {user.id}</h2>
+          <h2>Informations de l'utilisateur</h2>
+          <p>ID de l'utilisateur : {user.id}</p>
           <p>Email : {user.email}</p>
           {formattedDate && <p>Date d'inscription : {formattedDate}</p>}
         </div>
       ) : (
         <p>Chargement en cours...</p>
+      )}
+      {userProperties.length > 0 && (
+        <div>
+          <h2>Biens de l'utilisateur</h2>
+          <ul>
+            {userProperties.map((property) => (
+              <li key={property.id}>{property.title}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );
