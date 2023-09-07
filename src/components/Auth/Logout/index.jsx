@@ -2,6 +2,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../../../stores/userAtom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import './style.css'
 
 function LogoutButton() {
   const [, setUser] = useAtom(userAtom);
@@ -21,7 +22,7 @@ function LogoutButton() {
   };
 
   return (
-    <button onClick={handleLogout}>Déconnexion</button>
+    <button onClick={handleLogout} className='LogoutButton'>Déconnexion</button>
   );
 }
 
