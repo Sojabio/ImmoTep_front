@@ -1,0 +1,49 @@
+@import url('../../App.css');
+
+.showProperty {
+    width :75%;
+    height: 85vh;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-orange);
+    border-radius: 2rem;
+  }
+  
+  .showProperty h4 {
+    margin-top: 10rem;
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+  
+  .showProperty h5 {
+    font-size: 30px; 
+    margin: 10px 0; 
+  }
+  
+  .showProperty img {
+    max-width: 50%;
+    height: 50%;
+    margin-top: 20px;
+  }
+  
+  .DefaultThumbnails {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .showProperty hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+  }
+  
+  .showProperty a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .showProperty a:hover {
+    text-decoration: underline;
+  }
+  

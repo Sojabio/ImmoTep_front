@@ -28,7 +28,7 @@
 .search-button {
   padding: 0.7rem 1.6rem;
   background-color: var(--orange);
-  border: none;
+  border: 1px solid var(--blue);
   border-radius: 1.3rem;
   cursor: pointer;
   color: var(--white);
@@ -37,6 +37,13 @@
   font-style: normal;
   font-weight: 800;
   line-height: normal;
+  transition: 0.2s;
+}
+
+.search-button:hover{
+  background-color: var(--white);
+  border: 1px solid var(--orange);
+  color: var(--orange)
 }
 
 

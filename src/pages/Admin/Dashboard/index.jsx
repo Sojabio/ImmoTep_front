@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URL } from "../../../stores/apiUrl"; 
+import { API_URL } from "../../../stores/apiUrl";
+import './style.css';
 
 const DashboardAdmin = () => {
   const [properties, setProperties] = useState([]);
@@ -30,7 +31,7 @@ const DashboardAdmin = () => {
   }, []);
 
   return (
-    <div>
+    <div className='body table-container'>
       <h1>Liste des Biens</h1>
       <table>
         <thead>
