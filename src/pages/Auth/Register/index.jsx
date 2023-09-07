@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
 import { API_URL } from '../../../stores/apiUrl';
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 function Register () {
   const [, setUser] = useAtom(userAtom);
@@ -45,7 +48,7 @@ function Register () {
           token: response.headers.get("Authorization"),
           id: data.user.id
         });
-        
+
         navigate('/authsuccess')
       } else {
         setError('Erreur lors de la création du compte');
@@ -56,42 +59,42 @@ function Register () {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Créer un compte</h2>
+    <Form onSubmit={handleSubmit}>
+    <h2>Créer un compte</h2>
+    <Form.Group className="mb-3" controlId="formEmail">
       {error && <p>{error}</p>}
-      <div>
-        <label htmlFor="email">Email :</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Mot de passe :</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Confirme ton mot de passe :</label>
-        <input
-          type="password"
-          id="password"
-          value={password_confirmation}
-          onChange={(e) => setPassword_Confirmation(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Créer un compte et se connecter</button>
-    </form>
-  );
+      <Form.Control
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formPassword">
+      <Form.Control
+        type="password"
+        placeholder="Mot de passe"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formPasswordConfirmation">
+      <Form.Control
+        type="password"
+        placeholder="Confirmer le mot de passe"
+        value={password_confirmation}
+        onChange={(e) => setPassword_Confirmation(e.target.value)}
+        required
+      />
+    </Form.Group>
+
+    <button type="submit">Créer un compte et se connecter</button>
+  </Form>
+  )
 }
 
 export default Register;
