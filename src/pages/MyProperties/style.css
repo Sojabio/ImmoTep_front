@@ -1,4 +1,71 @@
-.buttonLink{
+.button-link{
   text-decoration: none;
   color: #ffffff;
+}
+
+.button-link:hover{
+  color: var(--orange)
+}
+
+.property-list {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-form{
+  padding-top: 1rem !important;
+}
+
+.property-card {
+  display: flex;
+  align-items: center;
+  margin: 2rem;
+  width: 75%;
+  height: 50vh;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: var(--dark-orange);
+}
+
+.property-card img {
+  max-width: 100%;
+  max-height: 60%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.property-card-image {
+  flex: 1;
+}
+
+.property-card-content {
+  flex: 1;
+  padding: 30px;
+  text-align: center;
+}
+
+.property-card-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.property-card-buttons .submit-button {
+  margin-bottom: 1rem !important;
+}
+
+.property-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.property-card p {
+  margin: 0;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

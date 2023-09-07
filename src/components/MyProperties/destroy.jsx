@@ -31,7 +31,7 @@ const DestroyProperty = ({propertyId, onDelete}) => {
 
 
   return (
-    <Button onClick={handleDestroy}>Supprimer ce bien</Button>
+    <Button className="submit-button" onClick={handleDestroy}>Supprimer ce bien</Button>
   )
 }
 

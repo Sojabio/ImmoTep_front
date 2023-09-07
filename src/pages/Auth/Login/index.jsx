@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form';
 
 import './style.css'
 // import { Link } from 'react-router-dom';
-
-
 function Login() {
   const [, setUser] = useAtom(userAtom);
   const [email, setEmail] = useState('');
