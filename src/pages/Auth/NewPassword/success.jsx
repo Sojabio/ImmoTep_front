@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
 import Button from "react-bootstrap/esm/Button"
+
 const NewPwdSuccess = () => {
   return (
-    <>
-    <div>Votre mdp a été modifié avec succès</div>
-    <Link to="/">
-        <Button>Rendez-vous sur la page d'accueil !</Button>
+    <div className="body center-form">
+    <div>Votre mot de passe a été modifié avec succès</div>
+    <Link to="/login">
+        <Button className="submit-button">Connectez-vous !</Button>
     </Link>
-    </>
+    </div>
   )
 }
 

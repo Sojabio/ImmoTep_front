@@ -3,8 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { API_URL } from "../../../stores/apiUrl";
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 const NewPassword = () => {
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const navigate = useNavigate();
   const { token } = useParams()
   console.log(token)
@@ -16,7 +20,7 @@ const NewPassword = () => {
       user: {
         reset_password_token: token,
         password: password,
-        password_confirmation: password,
+        password_confirmation: passwordConfirmation,
       },
     };
 
@@ -44,20 +48,31 @@ const NewPassword = () => {
 
 
   return (
-    <div>
-      <h1>Modifier le mdp :</h1>
-      <form onSubmit={setNewpassword}>
-        <div>
-          <input
+    <div className="body center-form">
+      <p>Choisissez un nouveau mot de passe :</p>
+      <Form onSubmit={setNewpassword}>
+      <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Control
+           className="form-border"
             type="password"
-            placeholder="nouveau mdp"
+            placeholder="nouveau mot de passe"
             onChange={e => setPassword(e.target.value)}
-          ></input>
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formPasswordConfirmation">
+          <Form.Control
+           className="form-border"
+            type="password"
+            placeholder="confirmation"
+            onChange={e => setPasswordConfirmation(e.target.value)}
+          />
+        </Form.Group>
+        <div className="center-button">
+          <Button className="submit-button" type="submit">
+            Modifier
+          </Button>
         </div>
-        <button type="submit">
-          Modifier le mdp
-        </button>
-      </form>
+      </Form>
     </div>
   );
 }

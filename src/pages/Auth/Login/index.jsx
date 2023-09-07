@@ -8,6 +8,7 @@ import { API_URL } from '../../../stores/apiUrl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import './style.css'
 // import { Link } from 'react-router-dom';
 
 
@@ -82,21 +83,22 @@ function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      }).then(() => navigate("/"));
+      }).then(() => navigate("/resetpwd"));
     } else {
       setError(
-        "Merci d'entrer une adresse mail valide avant de changer votre mdp."
+        "Entrez une adresse email valide afin de changer votre mot de passe."
       );
     }
   };
 
   return (
-    <div>
+    <div className="body center-form">
       <Form onSubmit={handleLogin}>
-        <h2> Connexion </h2>
+        <div className="form-title"> Connexion </div>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           {error && <p>{error}</p>}
           <Form.Control
+          className='form-border'
           type="email"
           placeholder="Adresse email"
           value={email}
@@ -106,6 +108,7 @@ function Login() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control
+            className='form-border'
             type="password"
             placeholder="Mot de passe"
             value={password}
@@ -113,10 +116,13 @@ function Login() {
             required
           />
         </Form.Group>
-
-        <Button type="submit">Se connecter</Button>
+        <div className="center-button">
+          <Button type="submit" className="submit-button ">Se connecter</Button>
+        </div>
       </Form>
-      <Button onClick={() => resetpassword()}>Mot de passe oublié ?</Button>
+      <div className="center-button">
+        <p className="reset-pwd" onClick={() => resetpassword()}>Mot de passe oublié ?</p>
+      </div>
     </div>
   );
 

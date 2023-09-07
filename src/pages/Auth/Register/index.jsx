@@ -8,7 +8,6 @@ import { API_URL } from '../../../stores/apiUrl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-
 function Register () {
   const [, setUser] = useAtom(userAtom);
   const [email, setEmail] = useState('');
@@ -59,41 +58,47 @@ function Register () {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-    <h2>Créer un compte</h2>
-    <Form.Group className="mb-3" controlId="formEmail">
-      {error && <p>{error}</p>}
-      <Form.Control
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-    </Form.Group>
+    <div className="body center-form" >
+      <Form onSubmit={handleSubmit}>
+      <div className="form-title">Créer un compte</div>
+      <Form.Group className="mb-3" controlId="formEmail">
+        {error && <p>{error}</p>}
+        <Form.Control
+          className='form-border'
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formPassword">
-      <Form.Control
-        type="password"
-        placeholder="Mot de passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-    </Form.Group>
+      <Form.Group className="mb-3" controlId="formPassword">
+        <Form.Control
+          className='form-border'
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formPasswordConfirmation">
-      <Form.Control
-        type="password"
-        placeholder="Confirmer le mot de passe"
-        value={password_confirmation}
-        onChange={(e) => setPassword_Confirmation(e.target.value)}
-        required
-      />
-    </Form.Group>
-
-    <button type="submit">Créer un compte et se connecter</button>
-  </Form>
+      <Form.Group className="mb-3" controlId="formPasswordConfirmation">
+        <Form.Control
+          className='form-border'
+          type="password"
+          placeholder="Confirmer le mot de passe"
+          value={password_confirmation}
+          onChange={(e) => setPassword_Confirmation(e.target.value)}
+          required
+        />
+      </Form.Group>
+      <div className="center-button">
+      <Button className="submit-button" type="submit">Créer et se connecter </Button>
+      </div>
+    </Form>
+  </div>
   )
 }
 

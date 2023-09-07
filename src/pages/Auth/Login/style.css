@@ -1,0 +1,8 @@
+.reset-pwd{
+  color: var(--orange);
+}
+
+.reset-pwd:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

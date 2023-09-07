@@ -71,11 +71,12 @@ function CreateProperty() {
   }
 
   return (
-    <div>
+    <div className="body center-form">
       <h2>Ajoutez un nouveau bien</h2>
       <Form encType="multipart/form-data" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formTitle">
           <Form.Control
+            className="form-border"
             type="text"
             placeholder="titre"
             id="title"
@@ -85,6 +86,7 @@ function CreateProperty() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrice">
           <Form.Control
+            className="form-border"
             type="number"
             id="price"
             placeholder="prix"
@@ -94,6 +96,7 @@ function CreateProperty() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formDescription">
           <Form.Control
+            className="form-border"
             as="textarea"
             row={3}
             id="description"
@@ -104,6 +107,7 @@ function CreateProperty() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCity">
           <Form.Control
+            className="form-border"
             type="text"
             placeholder="ville"
             id="city"
@@ -114,11 +118,14 @@ function CreateProperty() {
         <Form.Group className="mb-3" controlId="formFile">
         <Form.Label>Ajoutez une image</Form.Label>
           <Form.Control
+          className="form-border"
           type="file"
           name="image"
           onChange={handleImageChange} />
         </Form.Group>
-        <Button type="submit">Ajouter</Button>
+        <div className="center-button">
+          <Button className="submit-button" type="submit">Ajouter</Button>
+        </div>
       </Form>
     </div>
   );
