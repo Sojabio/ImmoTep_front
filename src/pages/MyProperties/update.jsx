@@ -4,6 +4,9 @@ import { useNavigate, useParams} from 'react-router-dom';
 import { userAtom } from '../../stores/userAtom';
 import { API_URL } from '../../stores/apiUrl';
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 function UpdateProperty() {
   const [title, setTitle] = useState(undefined);
   const [price, setPrice] = useState(undefined);
@@ -101,55 +104,53 @@ function UpdateProperty() {
   return (
     <div>
       <h2>Modifier ce bien</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Titre :</label>
-          <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Control
             placeholder={originalData.title}
             type="text"
             id="title"
             value={title || originalData.title}
             onChange={handleTitleChange}
           />
-        </div>
-        <div>
-          <label htmlFor="price">Price :</label>
-          <input
+          </Form.Group>
+        <Form.Group className="mb-3" controlId="formPrice">
+          <Form.Control
             placeholder={originalData.price}
             type="number"
             id="content"
             value={price || originalData.price}
             onChange={handlePriceChange}
           />
-        </div>
-        <div>
-          <label htmlFor="description">Description :</label>
-          <textarea
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formDescription">
+          <Form.Control
+            as="textarea"
+            row={3}
             placeholder={originalData.description}
             id="description"
             value={description || originalData.description}
             onChange={handleDescriptionChange}
           />
-        </div>
-        <div>
-          <label htmlFor="city">Ville :</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formCity">
+          <Form.Control
             placeholder={originalData.city}
             type="text"
             id="city"
             value={city}
             onChange={handleCityChange}
           />
-        </div>
-        <div>
-          <label htmlFor="image">image:</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formFile">
+        <Form.Label>Modifiez l'image</Form.Label>
+          <Form.Control
           type="file"
           name="image"
           onChange={handleImageChange} />
-        </div>
-        <button type="submit">Modifier</button>
-      </form>
+        </Form.Group>
+        <Button type="submit">Modifier</Button>
+      </Form>
     </div>
   );
 }

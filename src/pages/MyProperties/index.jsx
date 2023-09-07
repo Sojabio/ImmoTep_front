@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { API_URL } from "../../stores/apiUrl";
 
 import DestroyProperty from "../../components/MyProperties/destroy";
+import './style.css'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const MyProperties = () => {
   const id = useParams().id;
@@ -43,19 +46,24 @@ const MyProperties = () => {
 
   return (
     <>
-    <div>Mes annonces</div>
+    <h2>Mes annonces</h2>
     {myProperties.map(property => {
         return (
-          <div key={property.id}>
-            <p>annonce n° : {property.id}</p>
-            <p>titre : {property.title} </p>
-            <p>description : {property.description}</p>
-            <p>prix : {property.price}</p>
-            <p>city : {property.city}</p>
-            <img src={property.image} alt={property.title} />
-            <Link to={`/updateproperty/${property.id}`} originaltitle={property.title}>Modifier ce bien</Link>
-            <DestroyProperty propertyId={property.id} onDelete={handlePropertyDeleted} />            <p>*******************</p>
-          </div>
+          <Card style={{ width: '18rem' }} key={property.id} >
+            <Card.Img variant="top" src={property.image} alt={property.title} />
+            <Card.Body>
+              <Card.Title>{property.title}</Card.Title>
+              <Card.Text>
+              <p>{property.description}</p>
+              <p> {property.price} € </p>
+              <p>{property.city}</p>
+              </Card.Text>
+              <Button>
+              <Link className="buttonLink" to={`/updateproperty/${property.id}`} originaltitle={property.title}>Modifier ce bien</Link>
+              </Button>
+              <DestroyProperty propertyId={property.id} onDelete={handlePropertyDeleted} />
+            </Card.Body>
+          </Card>
         )
       })}
       <Link to="/createproperty">Ajouter un bien</Link>

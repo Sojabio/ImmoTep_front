@@ -4,6 +4,10 @@ import { userAtom } from '../../../stores/userAtom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../../../stores/apiUrl';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 // import { Link } from 'react-router-dom';
 
 
@@ -86,31 +90,36 @@ function Login() {
     }
   };
 
-
   return (
     <div>
-      <form onSubmit={handleLogin}>
-        <h2>Se connecter</h2>
-        {error && <p>{error}</p>}
-        <input
-          type="text"
+      <Form onSubmit={handleLogin}>
+        <h2> Connexion </h2>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          {error && <p>{error}</p>}
+          <Form.Control
+          type="email"
           placeholder="Adresse email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        />
-        <input
-          type="password"
-          placeholder="Mot de passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Se connecter</button>
-      </form>
-      <button  onClick={() => resetpassword()}>Mot de passe oublié ? </button>
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Control
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <Button type="submit">Se connecter</Button>
+      </Form>
+      <Button onClick={() => resetpassword()}>Mot de passe oublié ?</Button>
     </div>
   );
+
 }
 
 export default Login;

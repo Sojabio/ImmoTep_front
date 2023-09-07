@@ -2,6 +2,8 @@ import { useAtom } from 'jotai'
 import { userAtom } from "../../stores/userAtom";
 import { API_URL } from "../../stores/apiUrl";
 
+import Button from 'react-bootstrap/esm/Button';
+
 const DestroyProperty = ({propertyId, onDelete}) => {
   const [user] = useAtom(userAtom);
   const id = propertyId
@@ -29,7 +31,7 @@ const DestroyProperty = ({propertyId, onDelete}) => {
 
 
   return (
-    <button onClick={handleDestroy}>Supprimer ce bien</button>
+    <Button onClick={handleDestroy}>Supprimer ce bien</Button>
   )
 }
 
