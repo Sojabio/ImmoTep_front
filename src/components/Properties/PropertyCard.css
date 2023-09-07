@@ -1,0 +1,72 @@
+@import url('../../App.css');
+
+.property-card {
+    border: none;
+    border-radius: 5px;
+    margin: 2rem;
+    width: calc(33.33% - 100px);
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--dark-orange);
+  }
+  
+  .property-card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .property-card-content {
+    padding: 30px;
+  }
+  
+  .property-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .property-card p {
+    margin: 0;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+  }
+  
+  .property-card-link {
+    text-decoration: none;
+    color: var(--white);
+  }
+  
+  .property-card-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+
+  @media (max-width: 576px) {
+    .property-card {
+      width: 90%; 
+      margin: 10px 5px 10px 5px; 
+      overflow: hidden; 
+    }
+  
+    .property-card-content {
+      padding: 5px; 
+      text-align: center; 
+    }
+  
+    .property-card h4 {
+      font-size: 1rem; 
+    }
+  
+    .property-card p {
+      font-size: 0.9rem; 
+    }
+
+    .property-list {
+      margin-left: 30px;
+    }
+  }
+  
