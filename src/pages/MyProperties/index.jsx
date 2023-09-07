@@ -45,12 +45,16 @@ const MyProperties = () => {
 
 
   return (
-    <>
+    <div className="body center-form">
     <h2>Mes annonces</h2>
     {myProperties.map(property => {
         return (
           <Card style={{ width: '18rem' }} key={property.id} >
-            <Card.Img variant="top" src={property.image} alt={property.title} />
+            {property.image ? (
+              <Card.Img variant="top" src={property.image} alt={property.title} />
+            ) : (
+              <Card.Img variant="top" src="/pyramid2.png" alt={property.title} />
+            )}
             <Card.Body>
               <Card.Title>{property.title}</Card.Title>
               <Card.Text>
@@ -66,8 +70,10 @@ const MyProperties = () => {
           </Card>
         )
       })}
-      <Link to="/createproperty">Ajouter un bien</Link>
-    </>
+      <Link to="/createproperty">
+        <Button className="submit-button">Ajouter un bien </Button>
+      </Link>
+    </div>
   )
 }
 

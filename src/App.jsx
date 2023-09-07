@@ -22,6 +22,7 @@ import UpdateProperty from './pages/MyProperties/update';
 import DashboardAdmin from './pages/Admin/Dashboard';
 import UpdateUserInfo from './pages/UserInfo/update';
 import UserDetails from './pages/Admin/UserDetails';
+import ResetPwdInstruction from './pages/Auth/NewPassword/instruction';
 
 //components
 import NavBar from './components/Navbar'
@@ -59,6 +60,7 @@ function App() {
           <Route path="updateproperty/:id" element={<UpdateProperty/>}/>
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/resetpwd" element={<ResetPwdInstruction/>} />
           <Route path="/new_password/:token" element={<NewPassword />} />
           <Route path="/newpwdsuccess" element={<NewPwdSuccess/>}/>
           <Route path="/authsuccess" element={<AuthSuccess/>} />

@@ -17,3 +17,47 @@
   margin-top: 6rem !important;
 }
 
+.center-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.form-title{
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.center-button{
+  text-align: center;
+}
+
+.submit-button{
+  background-color: var(--orange);
+  border-color: var(--orange);
+  margin-bottom: 1rem
+}
+
+.submit-button:hover{
+  background-color: var(--white);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.form-border{
+  border-color: var(--orange);
+}
+
+.form-border:focus{
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 10px var(--orange);
+}
+
+.form-success{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25vh;
+}

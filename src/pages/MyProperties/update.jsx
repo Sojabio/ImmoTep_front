@@ -102,11 +102,12 @@ function UpdateProperty() {
   };
 
   return (
-    <div>
+    <div className="body center-form">
       <h2>Modifier ce bien</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formTitle">
           <Form.Control
+            className="form-border"
             placeholder={originalData.title}
             type="text"
             id="title"
@@ -116,6 +117,7 @@ function UpdateProperty() {
           </Form.Group>
         <Form.Group className="mb-3" controlId="formPrice">
           <Form.Control
+            className="form-border"
             placeholder={originalData.price}
             type="number"
             id="content"
@@ -125,6 +127,7 @@ function UpdateProperty() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formDescription">
           <Form.Control
+            className="form-border"
             as="textarea"
             row={3}
             placeholder={originalData.description}
@@ -135,6 +138,7 @@ function UpdateProperty() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCity">
           <Form.Control
+            className="form-border"
             placeholder={originalData.city}
             type="text"
             id="city"
@@ -145,11 +149,14 @@ function UpdateProperty() {
         <Form.Group className="mb-3" controlId="formFile">
         <Form.Label>Modifiez l'image</Form.Label>
           <Form.Control
+          className="form-border"
           type="file"
           name="image"
           onChange={handleImageChange} />
         </Form.Group>
-        <Button type="submit">Modifier</Button>
+        <div className="center-button">
+          <Button className="submit-button" type="submit">Modifier</Button>
+        </div>
       </Form>
     </div>
   );

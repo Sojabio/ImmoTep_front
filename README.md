@@ -1,10 +1,11 @@
-# React + Vite
+# ImmoTep
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ceci est la partie Front du projet ImmoTep
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-commit de authUserAdmin
+- Page d'accueil avec liste des propriétés disponibles
+- possibilité de consulter l'adresse email des propriétaires
+- possibilité d'ajouter des propriétés et de les modifier
+- possibilité d'ajouter des photos
+- système d'authentification user
+- système de recherche par ville
+- dashboard admin
