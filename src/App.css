@@ -61,3 +61,15 @@
   align-items: center;
   padding-top: 25vh;
 }
+
+.mini-jumbotron {
+  background-color: var(--blue);
+  padding: 2rem;
+  text-align: center;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}

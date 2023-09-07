@@ -102,62 +102,64 @@ function UpdateProperty() {
   };
 
   return (
-    <div className="body center-form">
-      <h2>Modifier ce bien</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formTitle">
-          <Form.Control
-            className="form-border"
-            placeholder={originalData.title}
-            type="text"
-            id="title"
-            value={title || originalData.title}
-            onChange={handleTitleChange}
-          />
+    <div className="body">
+      <div className="mini-jumbotron">Modifier ce bien</div>
+      <div className="center-form">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formTitle">
+            <Form.Control
+              className="form-border"
+              placeholder={originalData.title}
+              type="text"
+              id="title"
+              value={title || originalData.title}
+              onChange={handleTitleChange}
+            />
+            </Form.Group>
+          <Form.Group className="mb-3" controlId="formPrice">
+            <Form.Control
+              className="form-border"
+              placeholder={originalData.price}
+              type="number"
+              id="content"
+              value={price || originalData.price}
+              onChange={handlePriceChange}
+            />
           </Form.Group>
-        <Form.Group className="mb-3" controlId="formPrice">
-          <Form.Control
+          <Form.Group className="mb-3" controlId="formDescription">
+            <Form.Control
+              className="form-border"
+              as="textarea"
+              row={3}
+              placeholder={originalData.description}
+              id="description"
+              value={description || originalData.description}
+              onChange={handleDescriptionChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formCity">
+            <Form.Control
+              className="form-border"
+              placeholder={originalData.city}
+              type="text"
+              id="city"
+              value={city}
+              onChange={handleCityChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formFile">
+          <Form.Label>Modifiez l'image</Form.Label>
+            <Form.Control
             className="form-border"
-            placeholder={originalData.price}
-            type="number"
-            id="content"
-            value={price || originalData.price}
-            onChange={handlePriceChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formDescription">
-          <Form.Control
-            className="form-border"
-            as="textarea"
-            row={3}
-            placeholder={originalData.description}
-            id="description"
-            value={description || originalData.description}
-            onChange={handleDescriptionChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formCity">
-          <Form.Control
-            className="form-border"
-            placeholder={originalData.city}
-            type="text"
-            id="city"
-            value={city}
-            onChange={handleCityChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formFile">
-        <Form.Label>Modifiez l'image</Form.Label>
-          <Form.Control
-          className="form-border"
-          type="file"
-          name="image"
-          onChange={handleImageChange} />
-        </Form.Group>
-        <div className="center-button">
-          <Button className="submit-button" type="submit">Modifier</Button>
-        </div>
-      </Form>
+            type="file"
+            name="image"
+            onChange={handleImageChange} />
+          </Form.Group>
+          <div className="center-button">
+            <Button className="submit-button" type="submit">Modifier</Button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 }
