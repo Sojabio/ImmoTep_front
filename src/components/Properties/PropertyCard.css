@@ -12,8 +12,10 @@
   }
   
   .property-card img {
+    justify-content: center;
     max-width: 100%;
-    height: auto;
+    width: auto;
+    height: 200px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
@@ -36,13 +38,28 @@
   }
   
   .property-card-link {
-    text-decoration: none;
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    background-color: var(--orange);
+    border: 1px solid var(--dark-orange);
+    border-radius: 0.8rem;
+    cursor: pointer;
     color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+    text-align: center; 
+    margin-top: 10px; 
+    transition: 0.3s;
   }
   
   .property-card-link:hover {
-    text-decoration: underline;
-    color: #0056b3;
+    background-color: var(--white);
+    border: 1px solid var(--orange);
+    color: var(--orange);
   }
 
   @media (max-width: 576px) {

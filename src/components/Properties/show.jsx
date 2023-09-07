@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../stores/apiUrl";
+import "./Showcard.css";
+
 
 const showProperty = () => {
   const id = useParams().id
@@ -46,19 +48,21 @@ const showProperty = () => {
 
 
 
-return (
-  <div>
-    <h3>Voici les informations sur ce bien </h3>
-      <p>bien n° : {property.id}</p>
-      <p>titre : {property.title} </p>
-      <p>description : {property.description}</p>
-      <p>prix : {property.price}</p>
-      <p>ville : {property.city}</p>
-      <p>propriétaire: {owner.email}</p>
-      <p><img src={property.image} alt={property.title} /> </p>
-      <p>*******************</p>
+  return (
+    <div className="showProperty body">
+      <h2>{property.title}</h2>
+      {property.image ? (
+        <img src={property.image} alt={property.title} />
+      ) : (
+        <img src="/pyramid2.png" alt={property.title} className="DefaultThumbnails" />
+      )}
+      <hr />
+      <h4>{property.description}</h4>
+      <h5>{property.price} €</h5>
+      <h5>{property.city}</h5>
+      <h5>contacte : {owner.email}</h5>
     </div>
-)
+  )
 }
 
 export default showProperty

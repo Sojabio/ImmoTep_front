@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../../stores/apiUrl";
 import { Link } from "react-router-dom";
-import "./PropertyCard.css"; // Importez le fichier de style
+import "./PropertyCard.css";
 
 const Properties = ({ cityFilter }) => {
   const [properties, setProperties] = useState([]);
@@ -50,7 +50,11 @@ const Properties = ({ cityFilter }) => {
       {selectedProperties.length > 0 ? (
         selectedProperties.map((property) => (
           <div key={property.id} className="property-card">
-            <img src={property.image} alt={property.title} />
+            {property.image ? (
+              <img variant="top" src={property.image} alt={property.title} />
+            ) : (
+              <img variant="top" src="/pyramid2.png" alt={property.title} className="DefaultThumbnails"/>
+            )}
             <div className="property-card-content">
               <h4>{property.title}</h4>
               <p>annonce n° : {property.id}</p>

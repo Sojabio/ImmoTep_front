@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../stores/apiUrl';
 import { Link } from 'react-router-dom';
 import DestroyProperty from '../../../components/MyProperties/destroy';
+import './style.css';
 
 function UserDetails() {
   const { id } = useParams();
@@ -36,7 +37,7 @@ function UserDetails() {
   };
 
   return (
-    <div>
+    <div className='body container'>
       {user ? (
         <div>
           <h2>Informations de l'utilisateur</h2>
@@ -48,7 +49,7 @@ function UserDetails() {
         <p>Chargement en cours...</p>
       )}
       {userProperties.length > 0 && (
-        <div>
+        <div className='array'>
           <h2>Biens de l'utilisateur</h2>
           <table>
             <thead>
