@@ -48,10 +48,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className='globale'>
       <Router>
         <NavBar />
-        <Routes>
+        <Routes >
           <Route path="/" element={<Home/>} />
           <Route path="/property/:id" element={<ShowProperty/>}/>
           <Route path="/myproperties/:id" element={<MyProperties/>}/>
@@ -70,7 +70,7 @@ function App() {
         </Routes>
       </Router>
 
-    </>
+    </div>
   )
 }
 

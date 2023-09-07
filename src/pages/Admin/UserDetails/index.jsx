@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../stores/apiUrl';
+import { Link } from 'react-router-dom';
+import DestroyProperty from '../../../components/MyProperties/destroy';
 
 function UserDetails() {
   const { id } = useParams();
@@ -27,6 +29,12 @@ function UserDetails() {
       });
   }, [id]);
 
+  const handlePropertyDeleted = (propertyId) => {
+    // Mettez à jour la liste des biens après la suppression
+    const updatedProperties = userProperties.filter((property) => property.id !== propertyId);
+    setUserProperties(updatedProperties);
+  };
+
   return (
     <div>
       {user ? (
@@ -42,11 +50,34 @@ function UserDetails() {
       {userProperties.length > 0 && (
         <div>
           <h2>Biens de l'utilisateur</h2>
-          <ul>
-            {userProperties.map((property) => (
-              <li key={property.id}>{property.title}</li>
-            ))}
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userProperties.map((property) => (
+                <tr key={property.id}>
+                  <td>{property.id}</td>
+                  <td>
+                    <Link to={`/property/${property.id}`}>{property.title}</Link>
+                  </td>
+                  <td>{property.price}</td>
+                  <td>
+                    {/* Affichez le composant DestroyProperty pour chaque bien */}
+                    <DestroyProperty
+                      propertyId={property.id}
+                      onDelete={() => handlePropertyDeleted(property.id)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
