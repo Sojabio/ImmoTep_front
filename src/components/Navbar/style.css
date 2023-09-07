@@ -40,6 +40,30 @@
     color: var(--dark-orange) !important;
 }
 
-
+@media (max-width: 768px) {
+    .Navbar {
+      height: auto !important;
+    }
+  
+    .BrandTitle {
+      position: relative;
+      text-align: center;
+      left: 0;
+      margin-bottom: 1rem;
+    }
+  
+    .links {
+      position: relative;
+      text-align: center;
+      right: 0;
+      margin-top: 1rem;
+    }
+  
+    .Navlinks {
+      margin-left: 0 !important;
+      display: block;
+    }
+  }
+  
 
 

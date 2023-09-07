@@ -88,7 +88,7 @@ function Login() {
 
 
   return (
-    <div>
+    <div className='body'>
       <form onSubmit={handleLogin}>
         <h2>Se connecter</h2>
         {error && <p>{error}</p>}

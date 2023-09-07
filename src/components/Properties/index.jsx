@@ -1,90 +1,73 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { API_URL } from "../../stores/apiUrl";
 import { Link } from "react-router-dom";
+import "./PropertyCard.css"; // Importez le fichier de style
 
-const Properties = () => {
-  const [properties, setProperties] = useState([])
-  const [selectedProperties, setSelectedProperties] = useState([])
-  const [city, setCity] = useState('')
+const Properties = ({ cityFilter }) => {
+  const [properties, setProperties] = useState([]);
+  const [selectedProperties, setSelectedProperties] = useState([]);
 
-
-
- // RECUPERER LES DONNEES POUR LA LISTE
- useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch(API_URL + "/properties", {
-        method: 'get',
-        headers: {
-          // 'Authorization': `Bearer ${jwtToken}`,
-          'Content-Type': 'application/json'
+  // RECUPERER LES DONNEES POUR LA LISTE
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(API_URL + "/properties", {
+          method: "get",
+          headers: {
+            // 'Authorization': `Bearer ${jwtToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const jsonData = await response.json();
+          const reversedData = jsonData.reverse();
+          setProperties(reversedData);
+        } else {
+          throw new Error("Erreur lors de la requête");
         }
-      });
-      if (response.ok) {
-        const jsonData = await response.json();
-        const reversedData = jsonData.reverse();
-        setProperties(reversedData);
-        setSelectedProperties(reversedData);
-      } else {
-        throw new Error('Erreur lors de la requête');
+      } catch (error) {
+        console.error("Erreur de requête : ", error);
       }
-    } catch (error) {
-      console.error('Erreur de requête : ', error)
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // Filtrer les propriétés en fonction de la ville
+    if (cityFilter && cityFilter !== "") {
+      setSelectedProperties(
+        properties.filter((element) =>
+          element.city.toLowerCase().includes(cityFilter.toLowerCase())
+        )
+      );
+    } else {
+      setSelectedProperties(properties);
     }
-  };
-  fetchData()
-}, []);
-
-const searchByCity = (e) => {
-  e.preventDefault();
-
-  if (city !== "") {
-    setSelectedProperties(properties.filter(element => element.city && element.city.toLowerCase().includes(city.toLowerCase())))
-  } else {
-    setSelectedProperties(properties)
-  }
-}
-
+  }, [cityFilter, properties]);
 
   return (
-    <div>
-      <h1> Trier par ville </h1>
-      <div>
-        <form onSubmit={searchByCity}>
-          <input
-            type="text"
-            placeholder="Ville"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button type="submit">Rechercher</button>
-        </form>
-      </div>
-      <div>
-        {selectedProperties.length > 0 ? (
-          <>
-            <h3>Voici la liste des biens</h3>
-            {selectedProperties.map((property) => {
-              return (
-                <div key={property.id}>
-                  <p>annonce n° : {property.id}</p>
-                  <p>titre : {property.title} </p>
-                  <p>description : {property.description}</p>
-                  <p>prix : {property.price}</p>
-                  <p> ville : {property.city} </p>
-                  <p><img src={property.image} alt={property.title} /> </p>
-                  <Link to={`/property/${property.id}`}>en savoir plus</Link>
-                  <p>*******************</p>
-                </div>
-              );
-            })}
-          </>
-        ) : (
-          <p>aucune propriété dans cette ville</p>
-        )}
-      </div>
+    <div className="property-list">
+      {selectedProperties.length > 0 ? (
+        selectedProperties.map((property) => (
+          <div key={property.id} className="property-card">
+            <img src={property.image} alt={property.title} />
+            <div className="property-card-content">
+              <h4>{property.title}</h4>
+              <p>annonce n° : {property.id}</p>
+              <p>description : {property.description}</p>
+              <p>prix : {property.price}</p>
+              <p>ville : {property.city} </p>
+              <Link to={`/property/${property.id}`} className="property-card-link">
+                en savoir plus
+              </Link>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>aucune propriété dans cette ville</p>
+      )}
     </div>
   );
-}
+};
 
-export default Properties
+export default Properties;
