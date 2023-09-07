@@ -91,7 +91,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className='body'>
       <Form onSubmit={handleLogin}>
         <h2> Connexion </h2>
         <Form.Group className="mb-3" controlId="formBasicEmail">
